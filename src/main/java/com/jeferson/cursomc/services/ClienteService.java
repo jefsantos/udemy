@@ -16,7 +16,6 @@ import com.jeferson.cursomc.domain.Endereco;
 import com.jeferson.cursomc.domain.enums.TipoCliente;
 import com.jeferson.cursomc.dto.ClienteDTO;
 import com.jeferson.cursomc.dto.ClienteNewDTO;
-import com.jeferson.cursomc.repositories.CidadeRepository;
 import com.jeferson.cursomc.repositories.ClienteRepository;
 import com.jeferson.cursomc.repositories.EnderecoRepository;
 import com.jeferson.cursomc.services.exceptions.DataIntegrityException;
@@ -81,7 +80,7 @@ public class ClienteService {
 	}
 
 	public Cliente fromDTO(ClienteNewDTO objDto) {
-		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfouCnpj(),
+		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(),
 				TipoCliente.toEnum(objDto.getTipo()));
 		Cidade cid = new Cidade(objDto.getCidadeId(), null, null);
 		Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(),
