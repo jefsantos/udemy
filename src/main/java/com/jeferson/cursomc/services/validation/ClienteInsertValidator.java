@@ -9,8 +9,10 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import com.jeferson.cursomc.domain.enums.TipoCliente;
 import com.jeferson.cursomc.dto.ClienteNewDTO;
 import com.jeferson.cursomc.resources.exception.FieldMessage;
+import com.jeferson.cursomc.services.validation.utils.BR;
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
  @Override
  public void initialize(ClienteInsert ann) {
@@ -19,9 +21,20 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
  public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
  List<FieldMessage> list = new ArrayList<>();
  
- if(objDto.getTipo() ==null) {
+ if(objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) &&  !BR.isValidCPF(objDto.getCpfOuCnpj())){
+	 
+	 list.add(new FieldMessage("cpfOuCnpj", "CPF Invalido"));
 	 list.add(new FieldMessage("tipo","Tipo não pode ser Nulo"));
  }
+ 
+ 
+ if(objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod()) &&  !BR.isValidCNPJ(objDto.getCpfOuCnpj())){
+	 
+	 list.add(new FieldMessage("cpfOuCnpj", "CNPJ Invalido"));
+	 list.add(new FieldMessage("tipo","Tipo não pode ser Nulo"));
+ }
+ 
+ 
 
  // inclua os testes aqui, inserindo erros na lista
 

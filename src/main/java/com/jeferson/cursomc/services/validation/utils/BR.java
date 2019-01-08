@@ -27,7 +27,7 @@ public class BR {
      * @param ssn
      * @return
      */
-    public static boolean isValidSsn(final String ssn) {
+    public static boolean isValidCPF(final String ssn) {
         if ((ssn == null) || (ssn.length() != 11) || ssn.matches(ssn.charAt(0) + "{11}")) return false;
 
         final Integer digit1 = calculate(ssn.substring(0, 9), weightSsn);
@@ -41,7 +41,7 @@ public class BR {
      * @param tin
      * @return
      */
-    public static boolean isValidTin(final String tin) {
+    public static boolean isValidCNPJ(final String tin) {
         if ((tin == null) || (tin.length() != 14) || tin.matches(tin.charAt(0) + "{14}")) return false;
 
         final Integer digit1 = calculate(tin.substring(0, 12), weightTin);
