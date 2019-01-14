@@ -1,7 +1,5 @@
 package com.jeferson.cursomc.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 
 import com.jeferson.cursomc.domain.enums.EstadoPagamento;
