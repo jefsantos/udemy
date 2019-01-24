@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.org.apache.regexp.internal.recompile;
 
 
 @Entity
@@ -57,6 +58,14 @@ public class Pedido implements Serializable{
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
+	public double getValorTotal() {
+		double soma = 0;
+		for(ItemPedido ip : itens) {
+			soma = soma +ip.getSubTotal();
+		}
+	
+	return soma;
+	}
 
 	public Integer getId() {
 		return id;
