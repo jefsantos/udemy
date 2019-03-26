@@ -20,6 +20,9 @@ public abstract class AbstractEmailService implements EmailService {
 	@Value("${default.sender}")
 	private String sender;
 
+
+	
+
 	@Autowired
 	private TemplateEngine templateEngine;
 
@@ -40,6 +43,8 @@ public abstract class AbstractEmailService implements EmailService {
 		sm.setSentDate(new Date(System.currentTimeMillis()));
 		sm.setText(obj.toString());
 
+
+		
 		return sm;
 	}
 
@@ -56,8 +61,10 @@ public abstract class AbstractEmailService implements EmailService {
 		try {
 			MimeMessage mm = prepareMimeMessageFromPedido(obj);
 			sendHtmlEmail(mm);
+			
 		} catch (MessagingException e) {
 			sendOrderConfirmationEmail(obj);
+			
 		}
 	}
 
