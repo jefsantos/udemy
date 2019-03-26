@@ -42,7 +42,7 @@ public class PedidoService {
 	private ProdutoService produtoService;
 	
 	@Autowired
-	private EmailService emailService;
+	private EmailService emailService ;
 	
 	
 	
